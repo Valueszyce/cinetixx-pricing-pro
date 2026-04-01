@@ -179,17 +179,7 @@ const TierCard = ({ tier, index }: { tier: TierData; index: number }) => {
         {tier.features.map((f, i) => (
           <div key={i} className="flex items-start gap-2 text-xs">
             <span className="text-muted-foreground shrink-0 w-24 font-medium">{featureLabels[i]}</span>
-            <span className="text-foreground/90">
-              {typeof f === "object" && f !== null && "type" in f ? (
-                (f as { type: string }).type === "check" ? (
-                  <Check className="w-4 h-4 text-primary" />
-                ) : (
-                  <Minus className="w-4 h-4 text-muted-foreground" />
-                )
-              ) : (
-                f
-              )}
-            </span>
+            <span className="text-foreground/90">{f}</span>
           </div>
         ))}
       </div>
