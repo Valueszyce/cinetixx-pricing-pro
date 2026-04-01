@@ -1,6 +1,5 @@
-import { useRef, useEffect, useState } from "react";
 import PlaceholderChip from "./PlaceholderChip";
-import { Check, Minus } from "lucide-react";
+import { Check } from "lucide-react";
 
 interface TierData {
   name: string;
@@ -147,53 +146,49 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
 };
 
 const TierCard = ({ tier, index }: { tier: TierData; index: number }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-
   return (
     <div
-      ref={ref}
-      className="glass-card p-6 flex flex-col opacity-0"
+      className="glass-card flex flex-col overflow-hidden"
       style={{
-        animation: visible ? `fade-up 0.6s ease-out ${index * 0.1}s forwards` : "none",
+        animation: `fade-up 0.6s ease-out ${index * 0.1}s both`,
       }}
     >
-      <h3 className="text-2xl font-bold mb-3">{tier.name}</h3>
-      <div className="space-y-1 mb-5">
-        {tier.descriptors.map((d, i) => (
-          <p key={i} className="text-sm text-muted-foreground">{d}</p>
-        ))}
-      </div>
-      <p className="text-sm font-medium text-muted-foreground mb-6">Price on request</p>
-
-      <div className="flex-1 space-y-3 mb-6">
-        {tier.features.map((f, i) => (
-          <div key={i} className="flex items-start gap-2 text-xs">
-            <span className="text-muted-foreground shrink-0 w-24 font-medium">{featureLabels[i]}</span>
-            <span className="text-foreground/90">{f}</span>
-          </div>
-        ))}
-      </div>
-
-      <button
-        onClick={tier.onCtaClick}
-        className={`w-full py-2.5 rounded-lg font-semibold text-sm transition-colors ${
-          tier.ctaStyle === "solid"
-            ? "bg-primary text-primary-foreground hover:bg-cinema-red-hover"
-            : "border border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-        }`}
+      {/* Blue gradient header */}
+      <div
+        className="px-6 py-5"
+        style={{ background: "linear-gradient(135deg, #1565C0 0%, #1E88E5 100%)" }}
       >
-        {tier.cta}
-      </button>
+        <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
+        {tier.descriptors.map((d, i) => (
+          <p key={i} className="text-sm text-blue-100">{d}</p>
+        ))}
+      </div>
+
+      <div className="px-6 pt-4 pb-6 flex flex-col flex-1">
+        <p className="text-sm font-medium text-muted-foreground mb-5">Price on request</p>
+
+        <div className="flex-1 mb-6">
+          {tier.features.map((f, i) => (
+            <div key={i} className="py-2.5 border-b border-border last:border-b-0">
+              <span className="block text-xs font-medium text-muted-foreground mb-0.5">
+                {featureLabels[i]}
+              </span>
+              <span className="text-sm text-foreground">{f}</span>
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={tier.onCtaClick}
+          className={`w-full py-2.5 rounded-lg font-semibold text-sm transition-colors ${
+            tier.ctaStyle === "solid"
+              ? "bg-primary text-primary-foreground hover:opacity-90"
+              : "border border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+          }`}
+        >
+          {tier.cta}
+        </button>
+      </div>
     </div>
   );
 };

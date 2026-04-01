@@ -6,49 +6,49 @@
 
 @layer base {
   :root {
-    --background: 240 33% 7%;
-    --foreground: 0 0% 100%;
+    --background: 210 40% 97%;
+    --foreground: 214 60% 10%;
 
-    --card: 240 29% 12%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 214 60% 10%;
 
-    --popover: 240 29% 12%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 214 60% 10%;
 
-    --primary: 0 72% 51%;
+    --primary: 213 79% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 25% 15%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 214 60% 10%;
 
-    --muted: 240 20% 18%;
-    --muted-foreground: 0 0% 80%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 25% 42%;
 
-    --accent: 0 72% 51%;
+    --accent: 213 79% 42%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 100% / 0.1;
-    --input: 0 0% 100% / 0.1;
-    --ring: 0 72% 51%;
+    --border: 214 32% 88%;
+    --input: 214 32% 88%;
+    --ring: 213 79% 42%;
 
     --radius: 0.75rem;
 
-    --card-alt: 240 27% 14%;
-    --cinema-red: 0 72% 51%;
-    --cinema-red-hover: 0 72% 45%;
-    --text-secondary: 0 0% 80%;
+    --card-alt: 210 40% 96%;
+    --cinema-red: 213 79% 42%;
+    --cinema-red-hover: 213 79% 36%;
+    --text-secondary: 215 25% 42%;
 
-    --sidebar-background: 240 33% 7%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 72% 51%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 214 60% 10%;
+    --sidebar-primary: 213 79% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 25% 15%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 100% / 0.1;
-    --sidebar-ring: 0 72% 51%;
+    --sidebar-accent: 210 40% 94%;
+    --sidebar-accent-foreground: 214 60% 10%;
+    --sidebar-border: 214 32% 88%;
+    --sidebar-ring: 213 79% 42%;
   }
 }
 
@@ -70,9 +70,9 @@
 @layer utilities {
   .placeholder-chip {
     @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border border-dashed;
-    background: hsl(0 72% 51% / 0.12);
-    border-color: hsl(0 72% 51% / 0.5);
-    color: hsl(0 72% 70%);
+    background: hsl(213 79% 42% / 0.12);
+    border-color: hsl(213 79% 42% / 0.5);
+    color: hsl(213 79% 55%);
   }
 
   .glass-card {
