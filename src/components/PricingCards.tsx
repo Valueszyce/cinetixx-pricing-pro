@@ -7,7 +7,7 @@ interface TierData {
   descriptors: React.ReactNode[];
   cta: string;
   ctaStyle: "outlined" | "solid";
-  features: (string | { type: "check" } | { type: "dash" } | React.ReactNode)[];
+  features: React.ReactNode[];
   onCtaClick?: () => void;
 }
 
