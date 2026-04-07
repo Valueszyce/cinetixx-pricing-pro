@@ -161,7 +161,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de + full API & custom integrations",
         "AG Kino-Gilde, zmyle + full API & custom integrations",
-        <PendingCell>{dash}</PendingCell>,
+        <PendingCell>Yes</PendingCell>,
       ],
     },
   ];
