@@ -1,11 +1,18 @@
 import { Check, Minus } from "lucide-react";
 import PlaceholderChip from "./PlaceholderChip";
+import { PendingCell } from "./PendingBadge";
 
 type CellValue = string | "check" | "dash" | React.ReactNode;
+
+interface PendingConfig {
+  allTiers?: boolean;
+  tierIndices?: number[];
+}
 
 interface FeatureRow {
   label: string;
   values: CellValue[];
+  pending?: PendingConfig;
 }
 
 interface FeatureGroup {
@@ -20,7 +27,9 @@ const groups: FeatureGroup[] = [
     title: "Infrastructure",
     rows: [
       { label: "Number of locations", values: ["1 location", "2 locations", "3+ locations", "3+ locations (volume discount)"] },
-      { label: "Number of POS", values: ["2 POS per location", "5 POS per location", "Unlimited + mobile POS", "Unlimited + mobile POS"] },
+      { label: "Number of POS", values: ["3 POS per location", "6 POS per location", "Unlimited + mobile POS", "Unlimited + mobile POS"] },
+      { label: "Number of tickets included", values: ["20,000", "30,000", "40,000", "100,000"] },
+      { label: "Commission per offline ticket above threshold", values: ["€0.08", "€0.075", "€0.065", "€0.058"] },
     ],
   },
   {
@@ -29,30 +38,30 @@ const groups: FeatureGroup[] = [
     rows: [
       { label: "OTC sales", values: ["check", "check", "check", "check"] },
       { label: "TSE", values: ["check", "check", "check", "check"] },
-      {
-        label: "Online Sales commission",
-        values: [
-          <><PlaceholderChip>[Z]%</PlaceholderChip></>,
-          <><PlaceholderChip>[Y]%</PlaceholderChip></>,
-          <><PlaceholderChip>[X]%</PlaceholderChip></>,
-          "Negotiated",
-        ],
-      },
+      { label: "Online Sales", values: ["check", "check", "check", "check"] },
+      { label: "Program planning", values: ["check", "check", "check", "check"] },
     ],
   },
   {
     icon: "🍿",
     title: "Operations",
     rows: [
-      { label: "Program planning", values: ["check", "check", "check", "check"] },
-      { label: "Concessions / Inventory", values: ["Concessions", "Concessions + Basic inv.", "Concessions + Advanced inv.", "Centralized across locations"] },
+      {
+        label: "Concessions / Inventory",
+        values: ["Concessions", "Concessions + Basic inv.", "Concessions + Advanced inv.", "Centralized across locations"],
+        pending: { tierIndices: [3] },
+      },
     ],
   },
   {
     icon: "📊",
     title: "Insights",
     rows: [
-      { label: "Reporting", values: ["Basic", "Enhanced", "Advanced", "Group-level analytics"] },
+      {
+        label: "Reporting",
+        values: ["Basic", "Enhanced", "Advanced", "Group-level analytics"],
+        pending: { tierIndices: [3] },
+      },
     ],
   },
   {
@@ -67,22 +76,63 @@ const groups: FeatureGroup[] = [
     title: "Support",
     rows: [
       { label: "Customer support", values: ["Bug handling", "B2B 2nd level", "B2B + weekends", "Dedicated CSM + onboarding"] },
+      {
+        label: "SLA & priority incident handling",
+        values: [
+          <PlaceholderChip>[XX]%</PlaceholderChip>,
+          <PlaceholderChip>[XX]%</PlaceholderChip>,
+          <PlaceholderChip>[XX]%</PlaceholderChip>,
+          <PlaceholderChip>[XX]%</PlaceholderChip>,
+        ],
+        pending: { allTiers: true },
+      },
+      {
+        label: "Response time",
+        values: [
+          <PlaceholderChip>[YYY]%</PlaceholderChip>,
+          <PlaceholderChip>[YYY]%</PlaceholderChip>,
+          <PlaceholderChip>[YYY]%</PlaceholderChip>,
+          <PlaceholderChip>[YYY]%</PlaceholderChip>,
+        ],
+        pending: { allTiers: true },
+      },
+      {
+        label: "Resolution time",
+        values: [
+          <PlaceholderChip>[ZZZ]%</PlaceholderChip>,
+          <PlaceholderChip>[ZZZ]%</PlaceholderChip>,
+          <PlaceholderChip>[ZZZ]%</PlaceholderChip>,
+          <PlaceholderChip>[ZZZ]%</PlaceholderChip>,
+        ],
+        pending: { allTiers: true },
+      },
     ],
   },
   {
     icon: "📣",
     title: "Marketing",
     rows: [
-      { label: "Marketing tools", values: ["Discounting", "Newsletter + Discounting", "Vouchers & Loyalty", "Custom"] },
+      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"] },
     ],
   },
   {
     icon: "🔌",
     title: "Integrations",
     rows: [
-      { label: "Services providers API", values: ["König Filmdispo, One Cinema TMS", "König Filmdispo, One Cinema TMS, DATEV API", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo"] },
+      { label: "Services providers API", values: ["dash", "König Filmdispo, One Cinema TMS, DATEV API", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo"] },
       { label: "Online Ticketing / Sales Channels", values: ["Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "All + full API & custom integrations"] },
-      { label: "Loyalty & Voucher Programs API", values: ["AG Kino-Gilde (paid)", "AG Kino-Gilde, zmyle", "AG Kino-Gilde, zmyle", "All + full API & custom integrations"] },
+      { label: "Loyalty & Voucher Programs API", values: ["dash", "AG Kino-Gilde, zmyle", "AG Kino-Gilde, zmyle", "All + full API & custom integrations"] },
+    ],
+  },
+  {
+    icon: "🔐",
+    title: "Security",
+    rows: [
+      {
+        label: "Advanced user management & security",
+        values: ["dash", "dash", "dash", "dash"],
+        pending: { allTiers: true },
+      },
     ],
   },
 ];
@@ -113,8 +163,8 @@ const FeatureTable = () => (
           </thead>
           <tbody>
             {groups.map((g) => (
-              <>
-                <tr key={g.title}>
+              <React.Fragment key={g.title}>
+                <tr>
                   <td colSpan={5} className="pt-6 pb-2 px-4 font-semibold text-sm text-muted-foreground sticky left-0 bg-background z-10">
                     <span className="mr-2">{g.icon}</span>{g.title}
                   </td>
@@ -122,12 +172,21 @@ const FeatureTable = () => (
                 {g.rows.map((row, ri) => (
                   <tr key={row.label} className={ri % 2 === 0 ? "bg-secondary/30" : ""}>
                     <td className="py-3 px-4 font-medium text-muted-foreground sticky left-0 bg-inherit z-10">{row.label}</td>
-                    {row.values.map((v, vi) => (
-                      <td key={vi} className="py-3 px-4 text-center">{renderCell(v)}</td>
-                    ))}
+                    {row.values.map((v, vi) => {
+                      const isPending = row.pending?.allTiers || row.pending?.tierIndices?.includes(vi);
+                      return (
+                        <td key={vi} className="py-3 px-4 text-center">
+                          {isPending ? (
+                            <PendingCell>{renderCell(v)}</PendingCell>
+                          ) : (
+                            renderCell(v)
+                          )}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
-              </>
+              </React.Fragment>
             ))}
           </tbody>
         </table>
