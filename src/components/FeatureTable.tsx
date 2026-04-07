@@ -1,3 +1,4 @@
+import React from "react";
 import { Check, Minus } from "lucide-react";
 import PlaceholderChip from "./PlaceholderChip";
 import { PendingCell } from "./PendingBadge";
