@@ -34,12 +34,11 @@ const groups: FeatureGroup[] = [
     ],
   },
   {
-    icon: "🎟️",
-    title: "Sales",
+    icon: "⚙️",
+    title: "Features",
     rows: [
       { label: "OTC sales", values: ["check", "check", "check", "check"] },
       { label: "TSE", values: ["check", "check", "check", "check"] },
-      { label: "Online Sales", values: ["check", "check", "check", "check"] },
       { label: "Program planning", values: ["check", "check", "check", "check"] },
     ],
   },
@@ -52,6 +51,7 @@ const groups: FeatureGroup[] = [
         values: ["Concessions", "Concessions + Basic inv.", "Concessions + Advanced inv.", "Centralized across locations"],
         pending: { tierIndices: [3] },
       },
+      { label: "Online Sales", values: ["check", "check", "check", "check"] },
     ],
   },
   {
@@ -73,8 +73,24 @@ const groups: FeatureGroup[] = [
     ],
   },
   {
+    icon: "📣",
+    title: "Marketing",
+    rows: [
+      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"] },
+    ],
+  },
+  {
+    icon: "🔌",
+    title: "Integrations",
+    rows: [
+      { label: "Online Ticketing / Sales Channels", values: ["Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "All + full API & custom integrations"] },
+      { label: "Services providers API", values: ["dash", "König Filmdispo, One Cinema TMS, DATEV API", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo"] },
+      { label: "Loyalty & Voucher Programs API", values: ["dash", "AG Kino-Gilde, zmyle", "AG Kino-Gilde, zmyle", "All + full API & custom integrations"] },
+    ],
+  },
+  {
     icon: "🤝",
-    title: "Support",
+    title: "Support & SLA",
     rows: [
       { label: "Customer support", values: ["Bug handling", "B2B 2nd level", "B2B + weekends", "Dedicated CSM + onboarding"] },
       {
@@ -107,28 +123,6 @@ const groups: FeatureGroup[] = [
         ],
         pending: { allTiers: true },
       },
-    ],
-  },
-  {
-    icon: "📣",
-    title: "Marketing",
-    rows: [
-      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"] },
-    ],
-  },
-  {
-    icon: "🔌",
-    title: "Integrations",
-    rows: [
-      { label: "Services providers API", values: ["dash", "König Filmdispo, One Cinema TMS, DATEV API", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo"] },
-      { label: "Online Ticketing / Sales Channels", values: ["Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "All + full API & custom integrations"] },
-      { label: "Loyalty & Voucher Programs API", values: ["dash", "AG Kino-Gilde, zmyle", "AG Kino-Gilde, zmyle", "All + full API & custom integrations"] },
-    ],
-  },
-  {
-    icon: "🔐",
-    title: "Security",
-    rows: [
       {
         label: "Advanced user management & security",
         values: ["dash", "dash", "dash", "check"],
@@ -137,7 +131,6 @@ const groups: FeatureGroup[] = [
     ],
   },
 ];
-
 const tierNames = ["Good", "Better", "Best", "Enterprise"];
 
 const renderCell = (val: CellValue) => {
