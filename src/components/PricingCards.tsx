@@ -43,7 +43,6 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
       name: "Good",
       descriptors: [
         <><span className="font-bold text-white">20,000</span> tickets included</>,
-        "Highest commission per ticket",
       ],
       cta: "Get Started",
       ctaStyle: "outlined",
@@ -74,7 +73,6 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
       name: "Better",
       descriptors: [
         <><span className="font-bold text-white">30,000</span> tickets included</>,
-        "Medium commission per ticket",
       ],
       cta: "Get Started",
       ctaStyle: "outlined",
@@ -105,7 +103,6 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
       name: "Best",
       descriptors: [
         <><span className="font-bold text-white">40,000</span> tickets included</>,
-        "Lowest commission per ticket",
       ],
       cta: "Get Started",
       ctaStyle: "solid",
@@ -135,8 +132,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Enterprise",
       descriptors: [
-        "Made to measure",
-        "Volume-based discount negotiated per client",
+        "Made to measure, volume-based",
       ],
       cta: "Book a Demo",
       ctaStyle: "solid",
