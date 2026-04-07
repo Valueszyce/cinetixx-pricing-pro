@@ -80,30 +80,30 @@ const groups: FeatureGroup[] = [
       {
         label: "SLA & priority incident handling",
         values: [
-          <PlaceholderChip>[XX]%</PlaceholderChip>,
-          <PlaceholderChip>[XX]%</PlaceholderChip>,
-          <PlaceholderChip>[XX]%</PlaceholderChip>,
-          <PlaceholderChip>[XX]%</PlaceholderChip>,
+          <>Basic SLA (<PlaceholderChip>[XX]%</PlaceholderChip>), business hours support</>,
+          <>Enhanced SLA (<PlaceholderChip>[YYY]%</PlaceholderChip>), extended support hours</>,
+          <>Advanced SLA (<PlaceholderChip>[ZZZ]%</PlaceholderChip>), weekend support</>,
+          <>Advanced SLA (<PlaceholderChip>[XXX]%</PlaceholderChip>), weekend support</>,
         ],
         pending: { allTiers: true },
       },
       {
         label: "Response time",
         values: [
-          <PlaceholderChip>[YYY]%</PlaceholderChip>,
-          <PlaceholderChip>[YYY]%</PlaceholderChip>,
-          <PlaceholderChip>[YYY]%</PlaceholderChip>,
-          <PlaceholderChip>[YYY]%</PlaceholderChip>,
+          <><div>P0: 4h</div><div>P1: 6h</div><div>P2: 8h</div></>,
+          <><div>P0: 2h</div><div>P1: 4h</div><div>P2: 6h</div></>,
+          <><div>P0: 1h</div><div>P1: 2h</div><div>P2: 4h</div></>,
+          <><div>P0: 15 min</div><div>P1: 30 min</div><div>P2: 2h</div></>,
         ],
         pending: { allTiers: true },
       },
       {
         label: "Resolution time",
         values: [
-          <PlaceholderChip>[ZZZ]%</PlaceholderChip>,
-          <PlaceholderChip>[ZZZ]%</PlaceholderChip>,
-          <PlaceholderChip>[ZZZ]%</PlaceholderChip>,
-          <PlaceholderChip>[ZZZ]%</PlaceholderChip>,
+          "Best-effort basis (no resolution time commitment)",
+          <><div>P0: 24h</div><div>P1: 48h</div></>,
+          <><div>P0: 8–12h</div><div>P1: 24h</div></>,
+          <><div>P0: immediate workaround / few hours</div><div>P1: 4–8h</div><div>P2: 24h</div></>,
         ],
         pending: { allTiers: true },
       },
@@ -131,8 +131,8 @@ const groups: FeatureGroup[] = [
     rows: [
       {
         label: "Advanced user management & security",
-        values: ["dash", "dash", "dash", "dash"],
-        pending: { allTiers: true },
+        values: ["dash", "dash", "dash", "check"],
+        pending: { tierIndices: [3] },
       },
     ],
   },
