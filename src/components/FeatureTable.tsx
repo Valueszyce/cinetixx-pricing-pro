@@ -27,10 +27,10 @@ const groups: FeatureGroup[] = [
     icon: "🏢",
     title: "Infrastructure",
     rows: [
-      { label: "Number of locations", values: ["1 location", "2 locations", "3+ locations", "3+ locations (volume discount)"] },
-      { label: "Number of POS", values: ["3 POS per location", "6 POS per location", "Unlimited + mobile POS", "Unlimited + mobile POS"] },
-      { label: "Number of tickets included", values: ["20,000", "30,000", "40,000", "100,000"] },
-      { label: "Commission per offline ticket above threshold", values: ["€0.08", "€0.075", "€0.065", "€0.058"] },
+      { label: "Number of locations", values: ["1 location", "2 locations/3 locations (Add-on)", "3 locations +", "3 locations +"] },
+      { label: "Number of POS total", values: ["4 POS", "8 POS/12 POS (Add-on)", "Unlimited POS + mobile POS included", "Unlimited POS + mobile POS included"] },
+      { label: "Number of ticket included total", values: ["17,900", "25,000", "70,000", "70,000+ (recommended starting from 100,000)"] },
+      { label: "Commission per offline ticket above threshold", values: ["€0.100", "€0.097", "€0.070", "Custom (between €0.06–0.07)"] },
     ],
   },
   {
