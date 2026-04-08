@@ -13,8 +13,8 @@ interface TierData {
 
 const featureLabels = [
   "Number of locations",
-  "Number of POS",
-  "Number of tickets included",
+  "Number of POS total",
+  "Number of ticket included total",
   "Commission per offline ticket above threshold",
   "OTC sales",
   "TSE",
@@ -42,15 +42,15 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Good",
       descriptors: [
-        <><span className="font-bold text-white">20,000</span> tickets included</>,
+        <><span className="font-bold text-white">17,900</span> tickets included</>,
       ],
       cta: "Get Started",
       ctaStyle: "outlined",
       features: [
         "1 location",
-        "3 POS per location",
-        "20,000",
-        "€0.08",
+        "4 POS",
+        "17,900",
+        "€0.100",
         checkMark,
         checkMark,
         checkMark,
@@ -72,15 +72,15 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Better",
       descriptors: [
-        <><span className="font-bold text-white">30,000</span> tickets included</>,
+        <><span className="font-bold text-white">25,000</span> tickets included</>,
       ],
       cta: "Get Started",
       ctaStyle: "outlined",
       features: [
-        "2 locations",
-        "6 POS per location",
-        "30,000",
-        "€0.075",
+        "2 locations/3 locations (Add-on)",
+        "8 POS/12 POS (Add-on)",
+        "25,000",
+        "€0.097",
         checkMark,
         checkMark,
         checkMark,
@@ -102,15 +102,15 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Best",
       descriptors: [
-        <><span className="font-bold text-white">40,000</span> tickets included</>,
+        <><span className="font-bold text-white">70,000</span> tickets included</>,
       ],
       cta: "Get Started",
       ctaStyle: "solid",
       features: [
-        "3+ locations",
-        "Unlimited POS + mobile POS",
-        "40,000",
-        "€0.065",
+        "3 locations +",
+        "Unlimited POS + mobile POS included",
+        "70,000",
+        "€0.070",
         checkMark,
         checkMark,
         checkMark,
@@ -132,16 +132,16 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Enterprise",
       descriptors: [
-        "Made to measure, volume-based",
+        "Made to measure / Volume-based discount negotiated per client",
       ],
       cta: "Book a Demo",
       ctaStyle: "solid",
       onCtaClick: onBookDemo,
       features: [
-        "3+ locations (volume discount)",
-        "Unlimited POS + mobile POS",
-        "100,000",
-        "€0.058",
+        "3 locations +",
+        "Unlimited POS + mobile POS included",
+        "70,000+ (recommended starting from 100,000)",
+        "Custom (between €0.06–0.07)",
         checkMark,
         checkMark,
         checkMark,
