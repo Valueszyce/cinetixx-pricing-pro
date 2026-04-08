@@ -41,9 +41,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
   const tiers: TierData[] = [
     {
       name: "Good",
-      descriptors: [
-        "Highest commission per ticket",
-      ],
+      descriptors: [],
       cta: "Get Started",
       ctaStyle: "outlined",
       features: [
@@ -71,9 +69,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     },
     {
       name: "Better",
-      descriptors: [
-        "Medium commission per ticket",
-      ],
+      descriptors: [],
       cta: "Get Started",
       ctaStyle: "outlined",
       features: [
@@ -101,9 +97,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     },
     {
       name: "Best",
-      descriptors: [
-        "Lowest commission per ticket",
-      ],
+      descriptors: [],
       cta: "Get Started",
       ctaStyle: "solid",
       features: [
