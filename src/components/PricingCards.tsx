@@ -12,6 +12,7 @@ interface FeatureItem {
 interface TierData {
   name: string;
   descriptors: React.ReactNode[];
+  price: React.ReactNode;
   cta: string;
   ctaStyle: "outlined" | "solid";
   features: FeatureItem[];
@@ -56,6 +57,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Core",
       descriptors: [],
+      price: "2,449 EUR",
       cta: "Get Started",
       ctaStyle: "outlined",
       features: buildFeatures([
@@ -74,8 +76,8 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         checkMark,
         "Basic internal reporting",
         "Y-Pay",
-        "Discounting",
-        "Kinoheld",
+      "Discounting",
+      "Kinoheld",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
         "None",
         "Handling Bugs, B2B support extra paid",
@@ -88,6 +90,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Grow",
       descriptors: [],
+      price: "2,949 EUR",
       cta: "Get Started",
       ctaStyle: "outlined",
       features: buildFeatures([
@@ -106,7 +109,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         checkMark,
         "Better internal reporting",
         "API for non Y-Pay",
-        <PendingCell>Discounting, Vouchers, Newsletter</PendingCell>,
+        "Discounting, Vouchers, Newsletter",
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
         "AG Kino-Gild, zmyle",
@@ -120,6 +123,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Scale",
       descriptors: [],
+      price: "3,899 EUR",
       cta: "Get Started",
       ctaStyle: "solid",
       features: buildFeatures([
@@ -138,7 +142,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         checkMark,
         "Best internal reporting",
         "API for non Y-Pay",
-        <PendingCell>Discounting, Vouchers and loyalty items, Newsletter</PendingCell>,
+        "Discounting, Vouchers and loyalty items, Newsletter",
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
         "AG Kino-Gild, zmyle",
@@ -152,6 +156,12 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Strategic partnership",
       descriptors: [],
+      price: (
+        <>
+          <span className="text-sm font-normal text-muted-foreground">from </span>
+          5,899 EUR
+        </>
+      ),
       cta: "Book a Demo",
       ctaStyle: "solid",
       onCtaClick: onBookDemo,
@@ -171,7 +181,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         checkMark,
         "Group level reporting & analytics",
         "API for non Y-Pay, custom API Integration",
-        <PendingCell>Discounting, Vouchers and loyalty items, Newsletter</PendingCell>,
+        "Discounting, Vouchers and loyalty items, Newsletter",
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de, full API + custom integrations",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
         "AG Kino-Gild, zmyle, full API + custom integrations",
@@ -219,7 +229,7 @@ const TierCard = ({ tier, index }: { tier: TierData; index: number }) => {
       </div>
 
       <div className="px-6 pt-4 pb-6 flex flex-col flex-1">
-        <p className="text-sm font-medium text-muted-foreground mb-5">Price on request</p>
+        <p className="text-3xl font-bold mb-5" style={{ color: "#1565C0" }}>{tier.price}</p>
 
         <div className="flex-1 mb-6">
           {tier.features.map((f, i) => {

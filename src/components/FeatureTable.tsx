@@ -67,7 +67,7 @@ const groups: FeatureGroup[] = [
   {
     title: "Marketing",
     rows: [
-      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"], pending: { tierIndices: [1, 2, 3] } },
+      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"] },
     ],
   },
   {
