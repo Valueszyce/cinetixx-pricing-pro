@@ -32,6 +32,7 @@ const groups: FeatureGroup[] = [
       { label: "Number of POS total", values: ["4 POS", "8 POS/12 POS (Add-on)", "Unlimited POS + mobile POS included", "Unlimited POS + mobile POS included"] },
       { label: "Number of ticket included total", values: ["15,000", "25,000", "40,000", "75,000+"] },
       { label: "Number of extra ticket if cinema choose selling online through cinetixx", values: ["1,000", "2,000", "6,000", "n/a"] },
+      { label: "Extra tickets if cinema choose Yuvenda Pay", values: ["n/a", "1,300", "2,200", <PlaceholderChip>TBC</PlaceholderChip>] },
       { label: "Commission per ticket above threshold", values: ["", "", "", "__hide__"], subHeader: true },
       { label: "Offline", values: ["€0.105", "€0.095", "€0.880", "Custom (between 0,06-0,07)"], indent: true },
       { label: "Online", values: ["€0.105", "€0.095", "€0.880", "Custom (between 0,06-0,07)"], indent: true },
