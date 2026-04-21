@@ -12,6 +12,7 @@ interface FeatureItem {
 interface TierData {
   name: string;
   descriptors: React.ReactNode[];
+  price: React.ReactNode;
   cta: string;
   ctaStyle: "outlined" | "solid";
   features: FeatureItem[];
