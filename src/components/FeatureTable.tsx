@@ -32,10 +32,10 @@ const groups: FeatureGroup[] = [
       { label: "Number of POS total", values: ["4 POS", "8 POS/12 POS (Add-on)", "Unlimited POS + mobile POS included", "Unlimited POS + mobile POS included"] },
       { label: "Number of ticket included total", values: ["15,000", "25,000", "40,000", "75,000+"] },
       { label: "Number of extra ticket if cinema choose selling online through cinetixx", values: ["1,000", "2,000", "6,000", "n/a"] },
-      { label: "Commission per ticket above threshold", values: ["", "", "", ""], subHeader: true },
-      { label: "Offline", values: ["€0.105", "€0.095", "€0.880", "dash"], indent: true },
-      { label: "Online", values: ["€0.105", "€0.095", "€0.880", "dash"], indent: true },
-      { label: "API commission per ticket", values: ["0.11-0.15", "0.11-0.15", "0.11-0.15", "dash"], indent: true },
+      { label: "Commission per ticket above threshold", values: ["", "", "", "__hide__"], subHeader: true },
+      { label: "Offline", values: ["€0.105", "€0.095", "€0.880", "Custom (between 0,06-0,07)"], indent: true },
+      { label: "Online", values: ["€0.105", "€0.095", "€0.880", "Custom (between 0,06-0,07)"], indent: true },
+      { label: "API commission per ticket", values: ["0.11-0.15", "0.11-0.15", "0.11-0.15", "Custom (between 0,06-0,07)"], indent: true },
     ],
   },
   {
@@ -148,11 +148,13 @@ const FeatureTable = () => (
                 </tr>
                 {g.rows.map((row, ri) => {
                   if (row.subHeader) {
+                    const hideForStrategic = row.values[3] === "__hide__";
                     return (
                       <tr key={row.label}>
-                        <td colSpan={5} className="pt-3 pb-1 px-4 font-medium text-xs text-foreground sticky left-0 bg-background z-10">
+                        <td colSpan={hideForStrategic ? 4 : 5} className="pt-3 pb-1 px-4 font-medium text-xs text-foreground sticky left-0 bg-background z-10">
                           {row.label}
                         </td>
+                        {hideForStrategic && <td className="pt-3 pb-1 px-4"></td>}
                       </tr>
                     );
                   }

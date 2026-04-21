@@ -170,10 +170,10 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         "Unlimited POS + mobile POS included",
         "75,000+",
         "n/a",
-        null,
-        dash,
-        dash,
-        dash,
+        "__hide__",
+        "Custom (between 0,06-0,07)",
+        "Custom (between 0,06-0,07)",
+        "Custom (between 0,06-0,07)",
         checkMark,
         checkMark,
         checkMark,
@@ -234,6 +234,7 @@ const TierCard = ({ tier, index }: { tier: TierData; index: number }) => {
         <div className="flex-1 mb-6">
           {tier.features.map((f, i) => {
             if (f.subHeader) {
+              if (f.value === "__hide__") return null;
               return (
                 <div key={i} className="pt-3 pb-1 border-b border-border">
                   <span className="block text-xs font-semibold text-foreground">
