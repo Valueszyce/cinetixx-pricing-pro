@@ -151,7 +151,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     },
     {
       name: "Strategic partnership",
-      descriptors: ["Made to measure / Volume-based discount negotiated per client"],
+      descriptors: [],
       cta: "Book a Demo",
       ctaStyle: "solid",
       onCtaClick: onBookDemo,
@@ -207,13 +207,15 @@ const TierCard = ({ tier, index }: { tier: TierData; index: number }) => {
     >
       {/* Blue gradient header */}
       <div
-        className="px-6 py-5"
+        className="px-6 py-5 flex items-center min-h-[80px]"
         style={{ background: "linear-gradient(135deg, #1565C0 0%, #1E88E5 100%)" }}
       >
-        <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
-        {tier.descriptors.map((d, i) => (
-          <p key={i} className="text-sm text-blue-100">{d}</p>
-        ))}
+        <div>
+          <h3 className="text-2xl font-bold text-white">{tier.name}</h3>
+          {tier.descriptors.map((d, i) => (
+            <p key={i} className="text-sm text-blue-100 mt-1">{d}</p>
+          ))}
+        </div>
       </div>
 
       <div className="px-6 pt-4 pb-6 flex flex-col flex-1">
