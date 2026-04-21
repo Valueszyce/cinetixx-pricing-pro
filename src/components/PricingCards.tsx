@@ -158,7 +158,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
       descriptors: [],
       price: (
         <>
-          <span className="text-sm font-normal text-muted-foreground">from </span>
+          <span className="text-base font-normal text-muted-foreground">from </span>
           5,899 EUR
         </>
       ),
@@ -221,7 +221,7 @@ const TierCard = ({ tier, index }: { tier: TierData; index: number }) => {
         style={{ background: "linear-gradient(135deg, #1565C0 0%, #1E88E5 100%)" }}
       >
         <div>
-          <h3 className="text-2xl font-bold text-white">{tier.name}</h3>
+          <h3 className="text-xl font-bold text-white whitespace-nowrap">{tier.name}</h3>
           {tier.descriptors.map((d, i) => (
             <p key={i} className="text-sm text-blue-100 mt-1">{d}</p>
           ))}
