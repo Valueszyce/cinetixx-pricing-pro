@@ -2,53 +2,71 @@ import PlaceholderChip from "./PlaceholderChip";
 import { Check, Minus } from "lucide-react";
 import { PendingCell } from "./PendingBadge";
 
+interface FeatureItem {
+  label: string;
+  value: React.ReactNode;
+  indent?: boolean;
+  subHeader?: boolean;
+}
+
 interface TierData {
   name: string;
   descriptors: React.ReactNode[];
   cta: string;
   ctaStyle: "outlined" | "solid";
-  features: React.ReactNode[];
+  features: FeatureItem[];
   onCtaClick?: () => void;
 }
-
-const featureLabels = [
-  "Number of locations",
-  "Number of POS total",
-  "Number of ticket included total",
-  "Commission per offline ticket above threshold",
-  "OTC sales",
-  "TSE",
-  "Program planning",
-  "Concessions / Inventory mgmt",
-  "Online Sales",
-  "Reporting",
-  "Payment provider",
-  "Marketing tools",
-  "Online Ticketing / Sales Channels",
-  "Services providers API",
-  "Loyalty & Voucher Programs API",
-  "Customer support",
-  "SLA & priority incident handling",
-  "Response time",
-  "Resolution time",
-  "Advanced user management & security",
-];
 
 const checkMark = <Check className="w-4 h-4 text-primary" />;
 const dash = <Minus className="w-4 h-4 text-muted-foreground" />;
 
+const buildFeatures = (vals: React.ReactNode[]): FeatureItem[] => {
+  const labels: { label: string; indent?: boolean; subHeader?: boolean }[] = [
+    { label: "Number of locations" },
+    { label: "Number of POS total" },
+    { label: "Number of ticket included total" },
+    { label: "Number of extra ticket if cinema choose selling online through cinetixx" },
+    { label: "Commission per ticket above threshold", subHeader: true },
+    { label: "Offline", indent: true },
+    { label: "Online", indent: true },
+    { label: "API commission per ticket", indent: true },
+    { label: "OTC sales" },
+    { label: "TSE" },
+    { label: "Program planning" },
+    { label: "Concessions / Inventory management" },
+    { label: "Online Sales" },
+    { label: "Reporting" },
+    { label: "Payment provider" },
+    { label: "Marketing tools" },
+    { label: "Online Ticketing / Additional Sales Channels" },
+    { label: "Services providers API" },
+    { label: "Loyalty & Voucher / Discount Programs API" },
+    { label: "Customer support" },
+    { label: "SLA & priority incident handling" },
+    { label: "Response time" },
+    { label: "Resolution time" },
+    { label: "Advanced user management & security" },
+  ];
+  return labels.map((l, i) => ({ ...l, value: vals[i] }));
+};
+
 const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
   const tiers: TierData[] = [
     {
-      name: "Good",
+      name: "Core",
       descriptors: [],
       cta: "Get Started",
       ctaStyle: "outlined",
-      features: [
+      features: buildFeatures([
         "1 location",
         "4 POS",
-        "17,900",
-        "€0.100",
+        "15,000",
+        "1,000",
+        null, // sub-header marker
+        "€0.105",
+        "€0.105",
+        "0.11-0.15",
         checkMark,
         checkMark,
         checkMark,
@@ -57,102 +75,112 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         "Basic internal reporting",
         "Y-Pay",
         "Discounting",
-        "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de",
+        "Kinoheld",
+        "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
+        "None",
+        "Handling Bugs, B2B support extra paid",
+        <>Basic SLA (<PlaceholderChip>[XX]%</PlaceholderChip>), business hours support</>,
+        <><div>P0: 4h</div><div>P1: 6h</div><div>P2: 8h</div></>,
+        "Best-effort basis (no resolution time commitment)",
         dash,
-        dash,
-        "Bug handling; B2B support as paid add-on",
-        <PendingCell>Basic SLA (<PlaceholderChip>[XX]%</PlaceholderChip>), business hours support</PendingCell>,
-        <PendingCell><div>P0: 4h</div><div>P1: 6h</div><div>P2: 8h</div></PendingCell>,
-        <PendingCell>Best-effort basis (no resolution time commitment)</PendingCell>,
-        dash,
-      ],
+      ]),
     },
     {
-      name: "Better",
+      name: "Grow",
       descriptors: [],
       cta: "Get Started",
       ctaStyle: "outlined",
-      features: [
+      features: buildFeatures([
         "2 locations/3 locations (Add-on)",
         "8 POS/12 POS (Add-on)",
         "25,000",
-        "€0.097",
+        "2,000",
+        null,
+        "€0.095",
+        "€0.095",
+        "0.11-0.15",
         checkMark,
         checkMark,
         checkMark,
-        "Concessions + Basic inventory mgmt",
+        "Concessions + Basic inventory management",
         checkMark,
-        "Enhanced internal reporting",
-        "Y-Pay + API for non-Y-Pay providers",
-        <PendingCell>Discounting, Vouchers</PendingCell>,
+        "Better internal reporting",
+        "API for non Y-Pay",
+        <PendingCell>Discounting, Vouchers, Newsletter</PendingCell>,
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de",
-        "König Filmdispo, One Cinema TMS, DATEV API",
-        "AG Kino-Gilde, zmyle",
-        "B2B support included (2nd level)",
-        <PendingCell>Enhanced SLA (<PlaceholderChip>[YYY]%</PlaceholderChip>), extended support hours</PendingCell>,
-        <PendingCell><div>P0: 2h</div><div>P1: 4h</div><div>P2: 6h</div></PendingCell>,
-        <PendingCell><div>P0: 24h</div><div>P1: 48h</div></PendingCell>,
+        "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
+        "AG Kino-Gild, zmyle",
+        "B2B support included 2nd level",
+        <>Enhanced SLA (<PlaceholderChip>[YYY]%</PlaceholderChip>), extended support hours</>,
+        <><div>P0: 2h</div><div>P1: 4h</div><div>P2: 6h</div></>,
+        <><div>P0: 24h</div><div>P1: 48h</div></>,
         dash,
-      ],
+      ]),
     },
     {
-      name: "Best",
+      name: "Scale",
       descriptors: [],
       cta: "Get Started",
       ctaStyle: "solid",
-      features: [
+      features: buildFeatures([
         "3 locations +",
         "Unlimited POS + mobile POS included",
-        "70,000",
-        "€0.070",
+        "40,000",
+        "6,000",
+        null,
+        "€0.880",
+        "€0.880",
+        "0.11-0.15",
         checkMark,
         checkMark,
         checkMark,
-        "Concessions + Advanced inventory mgmt",
+        "Concessions + advanced inventory management",
         checkMark,
-        "Advanced internal reporting",
-        "Y-Pay + API for non-Y-Pay providers",
+        "Best internal reporting",
+        "API for non Y-Pay",
         <PendingCell>Discounting, Vouchers and loyalty items, Newsletter</PendingCell>,
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
-        "AG Kino-Gilde, zmyle",
-        "B2B support included (weekends incl.)",
-        <PendingCell>Advanced SLA (<PlaceholderChip>[ZZZ]%</PlaceholderChip>), weekend support</PendingCell>,
-        <PendingCell><div>P0: 1h</div><div>P1: 2h</div><div>P2: 4h</div></PendingCell>,
-        <PendingCell><div>P0: 8–12h</div><div>P1: 24h</div></PendingCell>,
+        "AG Kino-Gild, zmyle",
+        "B2B support on the weekends",
+        <>Advanced SLA (<PlaceholderChip>[ZZZ]%</PlaceholderChip>, weekend support)</>,
+        <><div>P0: 1h</div><div>P1: 2h</div><div>P2: 4h</div></>,
+        <><div>P0: 8–12h</div><div>P1: 24h</div></>,
         dash,
-      ],
+      ]),
     },
     {
-      name: "Enterprise",
-      descriptors: [
-        "Made to measure / Volume-based discount negotiated per client",
-      ],
+      name: "Strategic partnership",
+      descriptors: ["Made to measure / Volume-based discount negotiated per client"],
       cta: "Book a Demo",
       ctaStyle: "solid",
       onCtaClick: onBookDemo,
-      features: [
+      features: buildFeatures([
         "3 locations +",
         "Unlimited POS + mobile POS included",
-        "70,000+ (recommended starting from 100,000)",
-        "Custom (between €0.06–0.07)",
+        "75,000+",
+        "n/a",
+        null,
+        "Custom (between 0,06-0,07)",
+        "Custom (between 0,06-0,07)",
+        "Custom (between 0,06-0,07)",
         checkMark,
         checkMark,
         checkMark,
-        <PendingCell>Concessions + Centralized inventory across locations</PendingCell>,
+        "Concessions + advanced inventory management",
         checkMark,
-        <PendingCell>Group-level reporting & analytics</PendingCell>,
-        "Volume-based discounts, negotiated base fee",
+        "Group level reporting & analytics",
+        "API for non Y-Pay, custom API Integration",
         <PendingCell>Discounting, Vouchers and loyalty items, Newsletter</PendingCell>,
-        "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de + full API & custom integrations",
+        "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de, full API + custom integrations",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
-        "AG Kino-Gilde, zmyle + full API & custom integrations",
-        "Dedicated CSM + onboarding support",
-        <PendingCell>Advanced SLA (<PlaceholderChip>[XXX]%</PlaceholderChip>), weekend support</PendingCell>,
-        <PendingCell><div>P0: 15 min</div><div>P1: 30 min</div><div>P2: 2h</div></PendingCell>,
-        <PendingCell><div>P0: immediate workaround / few hours</div><div>P1: 4–8h</div><div>P2: 24h</div></PendingCell>,
-        <PendingCell>Yes</PendingCell>,
-      ],
+        "AG Kino-Gild, zmyle, full API + custom integrations",
+        "Dedicated customer support manager, onboarding and implementation support",
+        <>Advanced SLA (<PlaceholderChip>[XXX]%</PlaceholderChip>, weekend support)</>,
+        <><div>P0: 15 min</div><div>P1: 30 min</div><div>P2: 2h</div></>,
+        <><div>P0: immediate workaround / few hours</div><div>P1: 4–8h</div><div>P2: 24h</div></>,
+        "YES",
+      ]),
     },
   ];
 
@@ -192,14 +220,25 @@ const TierCard = ({ tier, index }: { tier: TierData; index: number }) => {
         <p className="text-sm font-medium text-muted-foreground mb-5">Price on request</p>
 
         <div className="flex-1 mb-6">
-          {tier.features.map((f, i) => (
-            <div key={i} className="py-2.5 border-b border-border last:border-b-0">
-              <span className="block text-xs font-medium text-muted-foreground mb-0.5">
-                {featureLabels[i]}
-              </span>
-              <span className="text-sm text-foreground">{f}</span>
-            </div>
-          ))}
+          {tier.features.map((f, i) => {
+            if (f.subHeader) {
+              return (
+                <div key={i} className="pt-3 pb-1 border-b border-border">
+                  <span className="block text-xs font-semibold text-foreground">
+                    {f.label}
+                  </span>
+                </div>
+              );
+            }
+            return (
+              <div key={i} className={`py-2.5 border-b border-border last:border-b-0 ${f.indent ? "pl-3" : ""}`}>
+                <span className="block text-xs font-medium text-muted-foreground mb-0.5">
+                  {f.label}
+                </span>
+                <span className="text-sm text-foreground">{f.value}</span>
+              </div>
+            );
+          })}
         </div>
 
         <button

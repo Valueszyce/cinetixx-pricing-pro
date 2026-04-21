@@ -14,27 +14,30 @@ interface FeatureRow {
   label: string;
   values: CellValue[];
   pending?: PendingConfig;
+  indent?: boolean;
+  subHeader?: boolean;
 }
 
 interface FeatureGroup {
-  icon: string;
   title: string;
   rows: FeatureRow[];
 }
 
 const groups: FeatureGroup[] = [
   {
-    icon: "🏢",
     title: "Infrastructure",
     rows: [
       { label: "Number of locations", values: ["1 location", "2 locations/3 locations (Add-on)", "3 locations +", "3 locations +"] },
       { label: "Number of POS total", values: ["4 POS", "8 POS/12 POS (Add-on)", "Unlimited POS + mobile POS included", "Unlimited POS + mobile POS included"] },
-      { label: "Number of ticket included total", values: ["17,900", "25,000", "70,000", "70,000+ (recommended starting from 100,000)"] },
-      { label: "Commission per offline ticket above threshold", values: ["€0.100", "€0.097", "€0.070", "Custom (between €0.06–0.07)"] },
+      { label: "Number of ticket included total", values: ["15,000", "25,000", "40,000", "75,000+"] },
+      { label: "Number of extra ticket if cinema choose selling online through cinetixx", values: ["1,000", "2,000", "6,000", "n/a"] },
+      { label: "Commission per ticket above threshold", values: ["", "", "", ""], subHeader: true },
+      { label: "Offline", values: ["€0.105", "€0.095", "€0.880", "Custom (between 0,06-0,07)"], indent: true },
+      { label: "Online", values: ["€0.105", "€0.095", "€0.880", "Custom (between 0,06-0,07)"], indent: true },
+      { label: "API commission per ticket", values: ["0.11-0.15", "0.11-0.15", "0.11-0.15", "Custom (between 0,06-0,07)"], indent: true },
     ],
   },
   {
-    icon: "⚙️",
     title: "Features",
     rows: [
       { label: "OTC sales", values: ["check", "check", "check", "check"] },
@@ -43,65 +46,50 @@ const groups: FeatureGroup[] = [
     ],
   },
   {
-    icon: "🍿",
     title: "Operations",
     rows: [
-      {
-        label: "Concessions / Inventory",
-        values: ["Concessions", "Concessions + Basic inv.", "Concessions + Advanced inv.", "Centralized across locations"],
-        pending: { tierIndices: [3] },
-      },
+      { label: "Concessions / Inventory management", values: ["Concessions", "Concessions + Basic inventory management", "Concessions + advanced inventory management", "Concessions + advanced inventory management"] },
       { label: "Online Sales", values: ["check", "check", "check", "check"] },
     ],
   },
   {
-    icon: "📊",
     title: "Insights",
     rows: [
-      {
-        label: "Reporting",
-        values: ["Basic", "Enhanced", "Advanced", "Group-level analytics"],
-        pending: { tierIndices: [3] },
-      },
+      { label: "Reporting", values: ["Basic internal reporting", "Better internal reporting", "Best internal reporting", "Group level reporting & analytics"] },
     ],
   },
   {
-    icon: "💳",
     title: "Payments",
     rows: [
-      { label: "Payment provider", values: ["Y-Pay", "Y-Pay + API", "Y-Pay + API", "Volume-based, negotiated"] },
+      { label: "Payment provider", values: ["Y-Pay", "API for non Y-Pay", "API for non Y-Pay", "API for non Y-Pay, custom API Integration"] },
     ],
   },
   {
-    icon: "📣",
     title: "Marketing",
     rows: [
-      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"], pending: { tierIndices: [1, 2, 3] } },
+      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"], pending: { tierIndices: [1, 2, 3] } },
     ],
   },
   {
-    icon: "🔌",
     title: "Integrations",
     rows: [
-      { label: "Online Ticketing / Sales Channels", values: ["Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "All + full API & custom integrations"] },
-      { label: "Services providers API", values: ["dash", "König Filmdispo, One Cinema TMS, DATEV API", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo"] },
-      { label: "Loyalty & Voucher Programs API", values: ["dash", "AG Kino-Gilde, zmyle", "AG Kino-Gilde, zmyle", "All + full API & custom integrations"] },
+      { label: "Online Ticketing / Additional Sales Channels", values: ["Kinoheld", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de, full API + custom integrations"] },
+      { label: "Services providers API", values: ["König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo"] },
+      { label: "Loyalty & Voucher / Discount Programs API", values: ["None", "AG Kino-Gild, zmyle", "AG Kino-Gild, zmyle", "AG Kino-Gild, zmyle, full API + custom integrations"] },
     ],
   },
   {
-    icon: "🤝",
     title: "Support & SLA",
     rows: [
-      { label: "Customer support", values: ["Bug handling", "B2B 2nd level", "B2B + weekends", "Dedicated CSM + onboarding"] },
+      { label: "Customer support", values: ["Handling Bugs, B2B support extra paid", "B2B support included 2nd level", "B2B support on the weekends", "Dedicated customer support manager, onboarding and implementation support"] },
       {
         label: "SLA & priority incident handling",
         values: [
           <>Basic SLA (<PlaceholderChip>[XX]%</PlaceholderChip>), business hours support</>,
           <>Enhanced SLA (<PlaceholderChip>[YYY]%</PlaceholderChip>), extended support hours</>,
-          <>Advanced SLA (<PlaceholderChip>[ZZZ]%</PlaceholderChip>), weekend support</>,
-          <>Advanced SLA (<PlaceholderChip>[XXX]%</PlaceholderChip>), weekend support</>,
+          <>Advanced SLA (<PlaceholderChip>[ZZZ]%</PlaceholderChip>, weekend support)</>,
+          <>Advanced SLA (<PlaceholderChip>[XXX]%</PlaceholderChip>, weekend support)</>,
         ],
-        pending: { allTiers: true },
       },
       {
         label: "Response time",
@@ -111,7 +99,6 @@ const groups: FeatureGroup[] = [
           <><div>P0: 1h</div><div>P1: 2h</div><div>P2: 4h</div></>,
           <><div>P0: 15 min</div><div>P1: 30 min</div><div>P2: 2h</div></>,
         ],
-        pending: { allTiers: true },
       },
       {
         label: "Resolution time",
@@ -121,17 +108,12 @@ const groups: FeatureGroup[] = [
           <><div>P0: 8–12h</div><div>P1: 24h</div></>,
           <><div>P0: immediate workaround / few hours</div><div>P1: 4–8h</div><div>P2: 24h</div></>,
         ],
-        pending: { allTiers: true },
       },
-      {
-        label: "Advanced user management & security",
-        values: ["dash", "dash", "dash", "check"],
-        pending: { tierIndices: [3] },
-      },
+      { label: "Advanced user management & security", values: ["dash", "dash", "dash", "YES"] },
     ],
   },
 ];
-const tierNames = ["Good", "Better", "Best", "Enterprise"];
+const tierNames = ["Core", "Grow", "Scale", "Strategic partnership"];
 
 const renderCell = (val: CellValue) => {
   if (val === "check") return <Check className="w-4 h-4 text-primary mx-auto" />;
@@ -160,26 +142,37 @@ const FeatureTable = () => (
               <React.Fragment key={g.title}>
                 <tr>
                   <td colSpan={5} className="pt-6 pb-2 px-4 font-semibold text-sm text-muted-foreground sticky left-0 bg-background z-10">
-                    <span className="mr-2">{g.icon}</span>{g.title}
+                    {g.title}
                   </td>
                 </tr>
-                {g.rows.map((row, ri) => (
-                  <tr key={row.label} className={ri % 2 === 0 ? "bg-secondary/30" : ""}>
-                    <td className="py-3 px-4 font-medium text-muted-foreground sticky left-0 bg-inherit z-10">{row.label}</td>
-                    {row.values.map((v, vi) => {
-                      const isPending = row.pending?.allTiers || row.pending?.tierIndices?.includes(vi);
-                      return (
-                        <td key={vi} className="py-3 px-4 text-center">
-                          {isPending ? (
-                            <PendingCell>{renderCell(v)}</PendingCell>
-                          ) : (
-                            renderCell(v)
-                          )}
+                {g.rows.map((row, ri) => {
+                  if (row.subHeader) {
+                    return (
+                      <tr key={row.label}>
+                        <td colSpan={5} className="pt-3 pb-1 px-4 font-medium text-xs text-foreground sticky left-0 bg-background z-10">
+                          {row.label}
                         </td>
-                      );
-                    })}
-                  </tr>
-                ))}
+                      </tr>
+                    );
+                  }
+                  return (
+                    <tr key={row.label} className={ri % 2 === 0 ? "bg-secondary/30" : ""}>
+                      <td className={`py-3 px-4 font-medium text-muted-foreground sticky left-0 bg-inherit z-10 ${row.indent ? "pl-8" : ""}`}>{row.label}</td>
+                      {row.values.map((v, vi) => {
+                        const isPending = row.pending?.allTiers || row.pending?.tierIndices?.includes(vi);
+                        return (
+                          <td key={vi} className="py-3 px-4 text-center">
+                            {isPending ? (
+                              <PendingCell>{renderCell(v)}</PendingCell>
+                            ) : (
+                              renderCell(v)
+                            )}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
               </React.Fragment>
             ))}
           </tbody>
