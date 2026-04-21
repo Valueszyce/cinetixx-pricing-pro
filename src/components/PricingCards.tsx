@@ -229,7 +229,7 @@ const TierCard = ({ tier, index }: { tier: TierData; index: number }) => {
       </div>
 
       <div className="px-6 pt-4 pb-6 flex flex-col flex-1">
-        <p className="text-sm font-medium text-muted-foreground mb-5">Price on request</p>
+        <p className="text-3xl font-bold mb-5" style={{ color: "#1565C0" }}>{tier.price}</p>
 
         <div className="flex-1 mb-6">
           {tier.features.map((f, i) => {
