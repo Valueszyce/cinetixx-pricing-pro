@@ -148,11 +148,13 @@ const FeatureTable = () => (
                 </tr>
                 {g.rows.map((row, ri) => {
                   if (row.subHeader) {
+                    const hideForStrategic = row.values[3] === "__hide__";
                     return (
                       <tr key={row.label}>
-                        <td colSpan={5} className="pt-3 pb-1 px-4 font-medium text-xs text-foreground sticky left-0 bg-background z-10">
+                        <td colSpan={hideForStrategic ? 4 : 5} className="pt-3 pb-1 px-4 font-medium text-xs text-foreground sticky left-0 bg-background z-10">
                           {row.label}
                         </td>
+                        {hideForStrategic && <td className="pt-3 pb-1 px-4"></td>}
                       </tr>
                     );
                   }
