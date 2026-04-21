@@ -57,6 +57,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Core",
       descriptors: [],
+      price: "2,449 EUR",
       cta: "Get Started",
       ctaStyle: "outlined",
       features: buildFeatures([
@@ -89,6 +90,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Grow",
       descriptors: [],
+      price: "2,949 EUR",
       cta: "Get Started",
       ctaStyle: "outlined",
       features: buildFeatures([
@@ -121,6 +123,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Scale",
       descriptors: [],
+      price: "3,899 EUR",
       cta: "Get Started",
       ctaStyle: "solid",
       features: buildFeatures([
@@ -153,6 +156,12 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
     {
       name: "Strategic partnership",
       descriptors: [],
+      price: (
+        <>
+          <span className="text-sm font-normal text-muted-foreground">from </span>
+          5,899 EUR
+        </>
+      ),
       cta: "Book a Demo",
       ctaStyle: "solid",
       onCtaClick: onBookDemo,
