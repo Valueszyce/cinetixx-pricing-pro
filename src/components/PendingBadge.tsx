@@ -25,4 +25,16 @@ export const PendingCell = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+export const GreenCell = ({ children }: { children: React.ReactNode }) => (
+  <div
+    className="rounded px-2 py-1"
+    style={{
+      background: "rgba(34, 197, 94, 0.10)",
+      border: "2px solid #16A34A",
+    }}
+  >
+    {children}
+  </div>
+);
+
 export default PendingBadge;

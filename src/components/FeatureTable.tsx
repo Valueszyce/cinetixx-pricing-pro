@@ -1,7 +1,7 @@
 import React from "react";
 import { Check, Minus } from "lucide-react";
 import PlaceholderChip from "./PlaceholderChip";
-import { PendingCell } from "./PendingBadge";
+import { PendingCell, GreenCell } from "./PendingBadge";
 
 type CellValue = string | "check" | "dash" | React.ReactNode;
 
@@ -14,6 +14,7 @@ interface FeatureRow {
   label: string;
   values: CellValue[];
   pending?: PendingConfig;
+  green?: PendingConfig;
   indent?: boolean;
   subHeader?: boolean;
 }
@@ -67,7 +68,7 @@ const groups: FeatureGroup[] = [
   {
     title: "Marketing",
     rows: [
-      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"] },
+      { label: "Marketing tools", values: ["Discounting", "Discounting, Vouchers, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter", "Discounting, Vouchers and loyalty items, Newsletter"], green: { tierIndices: [1, 2, 3] } },
     ],
   },
   {
@@ -160,10 +161,13 @@ const FeatureTable = () => (
                       <td className={`py-3 px-4 font-medium text-muted-foreground sticky left-0 bg-inherit z-10 ${row.indent ? "pl-8" : ""}`}>{row.label}</td>
                       {row.values.map((v, vi) => {
                         const isPending = row.pending?.allTiers || row.pending?.tierIndices?.includes(vi);
+                        const isGreen = row.green?.allTiers || row.green?.tierIndices?.includes(vi);
                         return (
                           <td key={vi} className="py-3 px-4 text-center">
                             {isPending ? (
                               <PendingCell>{renderCell(v)}</PendingCell>
+                            ) : isGreen ? (
+                              <GreenCell>{renderCell(v)}</GreenCell>
                             ) : (
                               renderCell(v)
                             )}

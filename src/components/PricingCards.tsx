@@ -1,6 +1,6 @@
 import PlaceholderChip from "./PlaceholderChip";
 import { Check, Minus } from "lucide-react";
-import { PendingCell } from "./PendingBadge";
+import { PendingCell, GreenCell } from "./PendingBadge";
 
 interface FeatureItem {
   label: string;
@@ -109,7 +109,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         checkMark,
         "Better internal reporting",
         "API for non Y-Pay",
-        "Discounting, Vouchers, Newsletter",
+        <GreenCell>Discounting, Vouchers, Newsletter</GreenCell>,
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
         "AG Kino-Gild, zmyle",
@@ -142,7 +142,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         checkMark,
         "Best internal reporting",
         "API for non Y-Pay",
-        "Discounting, Vouchers and loyalty items, Newsletter",
+        <GreenCell>Discounting, Vouchers and loyalty items, Newsletter</GreenCell>,
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
         "AG Kino-Gild, zmyle",
@@ -181,7 +181,7 @@ const PricingCards = ({ onBookDemo }: { onBookDemo: () => void }) => {
         checkMark,
         "Group level reporting & analytics",
         "API for non Y-Pay, custom API Integration",
-        "Discounting, Vouchers and loyalty items, Newsletter",
+        <GreenCell>Discounting, Vouchers and loyalty items, Newsletter</GreenCell>,
         "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de, full API + custom integrations",
         "König Filmdispo, One Cinema TMS, DATEV API, Acardo",
         "AG Kino-Gild, zmyle, full API + custom integrations",
