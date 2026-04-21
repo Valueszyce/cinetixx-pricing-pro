@@ -28,6 +28,7 @@ const buildFeatures = (vals: React.ReactNode[]): FeatureItem[] => {
     { label: "Number of POS total" },
     { label: "Number of ticket included total" },
     { label: "Number of extra ticket if cinema choose selling online through cinetixx" },
+    { label: "Extra tickets if cinema choose Yuvenda Pay" },
     { label: "Commission per ticket above threshold", subHeader: true },
     { label: "Offline", indent: true },
     { label: "Online", indent: true },
