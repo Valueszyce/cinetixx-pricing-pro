@@ -33,9 +33,9 @@ const groups: FeatureGroup[] = [
       { label: "Number of ticket included total", values: ["15,000", "25,000", "40,000", "75,000+"] },
       { label: "Number of extra ticket if cinema choose selling online through cinetixx", values: ["1,000", "2,000", "6,000", "n/a"] },
       { label: "Commission per ticket above threshold", values: ["", "", "", ""], subHeader: true },
-      { label: "Offline", values: ["€0.105", "€0.095", "€0.880", "Custom (between 0,06-0,07)"], indent: true },
-      { label: "Online", values: ["€0.105", "€0.095", "€0.880", "Custom (between 0,06-0,07)"], indent: true },
-      { label: "API commission per ticket", values: ["0.11-0.15", "0.11-0.15", "0.11-0.15", "Custom (between 0,06-0,07)"], indent: true },
+      { label: "Offline", values: ["€0.105", "€0.095", "€0.880", "dash"], indent: true },
+      { label: "Online", values: ["€0.105", "€0.095", "€0.880", "dash"], indent: true },
+      { label: "API commission per ticket", values: ["0.11-0.15", "0.11-0.15", "0.11-0.15", "dash"], indent: true },
     ],
   },
   {
