@@ -75,8 +75,8 @@ const groups: FeatureGroup[] = [
   {
     title: "Integrations",
     rows: [
-      { label: "Online Ticketing / Additional Sales Channels", values: ["Kinoheld", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de, full API + custom integrations"] },
-      { label: "Services providers API", values: ["König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo"] },
+      { label: "Online Ticketing / Additional Sales Channels", values: ["Kinoheld", "Kinoheld, CINEAMO, Cinfinity -TBC, Cineville -TBC, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de", "Kinoheld, CINEAMO, Cinfinity, Cineville, Rausgegangen.de, full API + custom integrations"] },
+      { label: "Services providers API", values: ["dash", "König Filmdispo, One Cinema TMS, DATEV API, Acardo -TBC", "König Filmdispo, One Cinema TMS, DATEV API, Acardo", "König Filmdispo, One Cinema TMS, DATEV API, Acardo"] },
       { label: "Loyalty & Voucher / Discount Programs API", values: ["None", "AG Kino-Gild, zmyle", "AG Kino-Gild, zmyle", "AG Kino-Gild, zmyle, full API + custom integrations"] },
     ],
   },
